@@ -36,12 +36,22 @@ nav{
     font-size: 28px;
 }
 
-#play-button{
+.right-link{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+#play-button, select{
     background-color: rgb(228, 228, 228);
     padding: 8px 30px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
+}
+
+.choose-level span{
+    padding-right: 10px;
 }
 
 main{
@@ -50,6 +60,11 @@ main{
     align-items: center;
     background-color: rgb(123, 255, 214);
     height: calc(100vh - 70px);
+}
+
+h2{
+    text-align: center;
+    padding-bottom: 10px;
 }
 
  #card-grid{
