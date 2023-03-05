@@ -25,7 +25,6 @@ che fornisca una scelta tra tre diversi livelli di difficoltà:
   divise in 7 caselle per 7 righe;
 */
 
-
 const playButtonEl =  document.getElementById("play-button");
 const cardGridEl = document.getElementById("card-grid");
 const standardTextEl = document.getElementById("standard-text");
@@ -39,51 +38,29 @@ playButtonEl.addEventListener("click", function(){
     let difficult = levelEl.value;
     //se la difficoltà è uguale a easy rimane uguale
     if(difficult == "easy") {
-
-    for (let i = 1; i < 101; i++){
-        const newElement = createSquareElement(i, 10, 10, 9);
-
-        newElement.addEventListener("click", function(){
-            newElement.classList.toggle("square-selected");
-            console.log(i);
-        });
-    }
+        //rimuovo il contenuto della griglia prima di rimpiazzarlo con la nuova difficoltà
+        cardGridEl.innerHTML = "";
+        createSquareElementLoop(101, 10, 10, 9);
 
     //Se la difficoltà è uguale a medium allora cambia 
     } else if (difficult == "medium") {
+        //rimuovo il contenuto della griglia prima di rimpiazzarlo con la nuova difficoltà
         cardGridEl.innerHTML = "";
-        for (let i = 1; i < 82; i++){
-            const newElement = createSquareElement(i, 9, 9, 8);
-            newElement.addEventListener("click", function(){
-            newElement.classList.toggle("square-selected");
-            console.log(i);
-            });
-        }
+        createSquareElementLoop(82, 9, 9, 8);
 
     //Se la difficoltà è uguale a hard allora cambia 
     } else if (difficult == "hard"){
+        //rimuovo il contenuto della griglia prima di rimpiazzarlo con la nuova difficoltà
         cardGridEl.innerHTML = "";
-        for (let i = 1; i < 50; i++){
-            const newElement = createSquareElement(i, 7, 7, 6);
-    
-            newElement.addEventListener("click", function(){
-            newElement.classList.toggle("square-selected");
-            console.log(i);
-            });
-        }
+        createSquareElementLoop(50, 7, 7, 6);
     }
-
-
 });
-
-
 
 
 
 //__________FUNZIONI___________
 
-//funzione per la creazione di un elemento div con classe square
-
+//Funzione per la creazione di un elemento div con classe square
 function createSquareElement(squareText, columnRowNumber, columnRowNumber, cardSpace ) {
     
     let newElement = document.createElement("div");
@@ -96,5 +73,16 @@ function createSquareElement(squareText, columnRowNumber, columnRowNumber, cardS
     return newElement;
 }
 
+//Funzione per la stabilire il numero di iterazioni che andranno a gestire la creazione dei quadrati
+function createSquareElementLoop(NumberOfSquare, columnRowNumber, columnRowNumber, cardSpace) {
+    for (let i = 1; i < NumberOfSquare; i++){
+        const newElement = createSquareElement(i, columnRowNumber, columnRowNumber, cardSpace);
+
+        newElement.addEventListener("click", function(){
+        newElement.classList.toggle("square-selected");
+        console.log(i);
+        });
+    }
+}
 
 //__________FINE FUNZIONI___________
